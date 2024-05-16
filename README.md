@@ -14,8 +14,8 @@
 * `还有兔子` \兔子万岁/
 
 ### 如何使用:
--找到 ~~牛【哔——】~~ NewBee.class   
--需要修改的是 `main()` 中的 `youtobeeUrl` `localPath` 还有代理参数        
+-找到一个叫 ~~牛【哔——】~~ `NewBee.java` 的文件   
+-需要修改的是 `main()` 中的 `youtobeeUrl` `localPath` 还有代理参数，参数意义写在注释上        
 -运行 `main()` 即可
     
 就这么些个文件，相信你不会找错的   
