@@ -78,19 +78,28 @@ public class NewBee {
 
     static JSONObject getVideoList(String youtobeeUrl, Proxy proxy) {
         //获取视频解析列表
-        String url = "https://www.y2mate.com/mates/analyzeV2/ajax";
+
+//        String url = "https://ssvid.net/api/ajax/search?hl=zh-cn";
+//        Map<String, Object> param = new HashMap<>();
+//        param.put("query", youtobeeUrl);
+//        param.put("vt", "home");
+
+        String url = "https://www.y2mate.com/mates/en948/analyzeV2/ajax";
         Map<String, Object> param = new HashMap<>();
         param.put("k_query", youtobeeUrl);
         param.put("k_page", "home");
         param.put("hl", "en");
-        param.put("q_auto", "1");
+        param.put("q_auto", "0");
 
         HttpRequest httpRequest = HttpUtil.createPost(url);
         httpRequest.contentType(ContentType.MULTIPART.getValue());
+        httpRequest.header("referer","https://www.y2mate.com/en948",true);
         httpRequest.setProxy(proxy);
 
         HttpResponse response = httpRequest.timeout(HttpGlobalConfig.getTimeout()).form(param).execute();
         String body = response.body();
+
+        System.out.println(body);
 
 //            String body = "{\"status\":\"ok\",\"mess\":\"\",\"page\":\"detail\",\"vid\":\"e9dZQelULDk\",\"extractor\":\"youtube\",\"title\":\"Happiness\",\"t\":256,\"a\":\"Steve Cutts\",\"links\":{\"mp4\":{\"137\":{\"size\":\"108.9 MB\",\"f\":\"mp4\",\"q\":\"1080p\",\"q_text\":\"1080p (.mp4) <span class=\\\"label label-primary\\\"><small>HD<\\/small><\\/span>\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghNgqkwxyUfMcutx\\/hKr5c4ceff9Bnt6+HM4A6W+LJg==\"},\"22\":{\"size\":\"37.8 MB\",\"f\":\"mp4\",\"q\":\"720p\",\"q_text\":\"720p (.mp4) <span class=\\\"label label-primary\\\"><small>m-HD<\\/small><\\/span>\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghNgqkwx0U\\/tQ9918mb3wbZgcdulcmZavAYpIp2w=\"},\"135\":{\"size\":\"21.1 MB\",\"f\":\"mp4\",\"q\":\"480p\",\"q_text\":\"480p (.mp4)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghNgqkwx3WftQ9918mb3wbZgcdulcmZavAYpIpG2N\"},\"18\":{\"size\":\"14.2 MB\",\"f\":\"mp4\",\"q\":\"360p\",\"q_text\":\"360p (.mp4)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghNgqkwxwV\\/tQ9918mb3wbZgcdulcmZavAYpIpGY=\"},\"133\":{\"size\":\"8.9 MB\",\"f\":\"mp4\",\"q\":\"240p\",\"q_text\":\"240p (.mp4)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghNgqkwxxVftcutx\\/hKr5c4ceff9Bnt6+HM4A6W+LIg==\"},\"160\":{\"size\":\"6.3 MB\",\"f\":\"mp4\",\"q\":\"144p\",\"q_text\":\"144p (.mp4)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghNgqkwxyVf9cutx\\/hKr5c4ceff9Bnt6+HM4A6W+OIQ==\"},\"3gp@144p\":{\"size\":\"MB\",\"f\":\"3gp\",\"q\":\"144p\",\"q_text\":\"144p (.3gp)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghIY91wxyVf9cutx\\/hKr5c4ceff9Bnt6+HM4A6W3fYfDaZFuZ\"},\"auto\":{\"size\":\"\",\"f\":\"mp4\",\"q\":\"auto\",\"selected\":\"selected\",\"q_text\":\"MP4 auto quality\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghNgqkwwiFL9Dutx\\/hKr5c4ceff9Bnt4=\"}},\"mp3\":{\"140\":{\"size\":\"4 MB\",\"f\":\"m4a\",\"q\":\".m4a\",\"q_text\":\".m4a (128kbps)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghNhuxgxyU\\/NQ9918mb3wbZgcdulcmZavAY1IpGqI\"},\"mp3128\":{\"size\":\"4 MB\",\"f\":\"mp3\",\"q\":\"128kbps\",\"q_text\":\"MP3 - 128kbps\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghNgqlAxyU\\/NQ9918mb3wbZgcdulcmQ==\"}},\"other\":{\"249\":{\"size\":\"1.6 MB\",\"f\":\"webm\",\"q\":\"Audio\",\"q_text\":\"Audio .webm (48kbps)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghMI\\/xR0\\/VfNQ9918mb3wbZgcdulcmZatBdZR5yKKJYk=\"},\"250\":{\"size\":\"2 MB\",\"f\":\"webm\",\"q\":\"Audio\",\"q_text\":\"Audio .webm (64kbps)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghMI\\/xR0\\/V\\/9Q9918mb3wbZgcdulcmZatBdZR5yKKJIA=\"},\"251\":{\"size\":\"4 MB\",\"f\":\"webm\",\"q\":\"Audio\",\"q_text\":\"Audio .webm (160kbps)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghMI\\/xR0\\/UP0cutx\\/hKr5c4ceff9Bnt6+Hspc8CzEI4Xa\"},\"598\":{\"size\":\"825.1 KB\",\"f\":\"webm\",\"q\":\"Video\",\"q_text\":\"Video only 144p (WEBM)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghMI\\/xR0\\/UP8Y5p0zhrTzbZAfYPZclcTxRcJb4TbdY8zeaVc=\"},\"133\":{\"size\":\"8.9 MB\",\"f\":\"mp4\",\"q\":\"Video\",\"q_text\":\"Video only 240P (MP4)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghNgqkwxxVftcutx\\/hKr5c4ceff9Bnt6+Hspc8CzEIIPY\"},\"242\":{\"size\":\"5.4 MB\",\"f\":\"webm\",\"q\":\"Video\",\"q_text\":\"Video only 240P  (WEBM)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghMI\\/xR0\\/U\\/8ctpF+h7fuepkBf\\/RXg9n2DdFA\\/TvKbYLfYg==\"},\"134\":{\"size\":\"14.2 MB\",\"f\":\"mp4\",\"q\":\"Video\",\"q_text\":\"Video only 360P (MP4)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghNgqkwxwV\\/tcutx\\/hKr5c4ceff9Bnt6+Hspc8CzEIIPf\"},\"243\":{\"size\":\"10.1 MB\",\"f\":\"webm\",\"q\":\"Video\",\"q_text\":\"Video only 360P  (WEBM)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghMI\\/xR0\\/Uv0ctpF+h7fuepkBf\\/RXg9n2DdFA\\/TvKbYLfYw==\"},\"135\":{\"size\":\"21.1 MB\",\"f\":\"mp4\",\"q\":\"Video\",\"q_text\":\"Video only 480P (MP4)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghNgqkwx3WftQ9918mb3wbZgcdulcmZatBdZR5yKJIoU=\"},\"244\":{\"size\":\"17.8 MB\",\"f\":\"webm\",\"q\":\"Video\",\"q_text\":\"Video only 480P  (WEBM)\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghMI\\/xR0\\/VfMctpF+h7fuepkBf\\/RXg9n2DdFA\\/TvKbYLfZA==\"},\"137\":{\"size\":\"108.9 MB\",\"f\":\"mp4\",\"q\":\"Video\",\"q_text\":\"Video only (MP4)<span class=\\\"label label-primary\\\"><small>1K<\\/small><\\/span>\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghNgqkwxyUfMcutx\\/hKr5c4ceff9Bnt6+Hspc8CzEIIPc\"},\"248\":{\"size\":\"62.3 MB\",\"f\":\"webm\",\"q\":\"Video\",\"q_text\":\"Video only (WEBM)<span class=\\\"label label-primary\\\"><small>1K<\\/small><\\/span>\",\"k\":\"joAQXNe0zpP3a8X07afYqcH+Al7j4qoghMI\\/xR0\\/UPsU9pF+h7fuepkBf\\/RXg9n2DdFA\\/TvKbYLfaA==\"}}},\"related\":[{\"title\":\"Related Videos\",\"contents\":[]}]}";
         return JSONObject.parseObject(body);
@@ -114,6 +123,7 @@ public class NewBee {
     static JSONObject getDownloadLink(String vid, String videoKey, Proxy proxy) {
 
         //根据获取到的下载key，获取下载链接
+//        String url = "https://ssvid.net/api/ajax/convert";
         String url = "https://www.y2mate.com/mates/convertV2/index";
         Map<String, Object> param = new HashMap<>();
         param.put("vid", vid);
@@ -121,10 +131,13 @@ public class NewBee {
 
         HttpRequest httpRequest = HttpUtil.createPost(url);
         httpRequest.contentType(ContentType.MULTIPART.getValue());
+        httpRequest.header("referer","https://www.y2mate.com/youtube/"+vid,true);
         httpRequest.setProxy(proxy);
 
         HttpResponse response = httpRequest.timeout(HttpGlobalConfig.getTimeout()).form(param).execute();
         String body = response.body();
+
+        System.out.println(body);
 
         return JSONObject.parseObject(body);
     }
