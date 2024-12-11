@@ -1,5 +1,6 @@
 package cn.mikulink.rabbityoutobeedownload;
 
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.http.*;
 import cn.mikulink.rabbityoutobeedownload.util.DownloadUtil;
 import com.alibaba.fastjson.JSONObject;
@@ -46,10 +47,12 @@ public class NewBee {
         JSONObject videoList = JSONObject.parseObject(links.get("mp4").toString());
 
         //获取1080p视频 如果没有则获取720p
-        String downloadKey = parseVideoKey(videoList, "1080p");
-        if (null == downloadKey) {
-            downloadKey = parseVideoKey(videoList, "720p");
-        }
+//        String downloadKey = parseVideoKey(videoList, "1080p");
+//        if (ObjectUtil.isEmpty(downloadKey)) {
+//            downloadKey = parseVideoKey(videoList, "720p");
+//        }
+        //只下载720p的视频 - 上面的1080p有问题
+        String downloadKey = parseVideoKey(videoList, "720p");
 
         //获取下载链接
         String vid = videoListInfo.get("vid").toString();
